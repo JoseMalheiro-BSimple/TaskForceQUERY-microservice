@@ -1,0 +1,23 @@
+﻿using Application.DTO;
+using Application.IServices;
+using Domain.Messages;
+using MassTransit;
+
+namespace InterfaceAdapters.Consumer;
+
+public class CollaboratorCreatedConsumer : IConsumer<CollaboratorCreatedMessage>
+{
+    private readonly ICollaboratorService _collaboratorService;
+
+    public CollaboratorCreatedConsumer(ICollaboratorService collaboratorService)
+    {
+        _collaboratorService = collaboratorService;
+    }
+
+    public async Task Consume(ConsumeContext<CollaboratorCreatedMessage> context)
+    {
+        var msg = context.Message;
+        CreateCollaboratorDTO createDTO = new CreateCollaboratorDTO(msg.Id);
+        await _collaboratorService.AddConsumed(createDTO);
+    }
+}
