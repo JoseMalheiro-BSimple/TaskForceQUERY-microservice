@@ -27,7 +27,7 @@ namespace InterfaceAdapters.Controller
         }
 
         // 2. GetTaskForcesByProjectId
-        [HttpGet("project/{projectId:guid}")]
+        [HttpGet("project/{projectId}")]
         public async Task<ActionResult<IEnumerable<TaskForceDTO>>> GetByProjectId(Guid projectId)
         {
             var result = await _taskForceService.GetAllByProject(projectId);

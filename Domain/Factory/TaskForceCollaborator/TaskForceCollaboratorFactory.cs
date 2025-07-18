@@ -26,7 +26,7 @@ public class TaskForceCollaboratorFactory : ITaskForceCollaboratorFactory
         if (taskForceCollaborator != null)
             throw new ArgumentException("Association between task force and collaborator with this id already exisits!");
 
-        if (taskForce == null)
+        if (taskForce != null)
             throw new ArgumentNullException("Task force doesn't exist!");
 
         if (collaborator == null)
